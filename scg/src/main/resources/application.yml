@@ -1,0 +1,54 @@
+
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - name: GlobalFilter
+          args:
+            baseMessage: Spring Cloud Gateway GlobalFilter
+            preLogger: true
+            postLogger: true
+      routes:
+#        - id: auth-svc
+#          uri: http://localhost:8081/
+#          predicates:
+#            - Path=/auth/**
+#          filters:
+#            - name: AuthFilter
+#              args:
+#                baseMessage: Spring Cloud Gateway AuthFilter
+#                preLogger: true
+#                postLogger: true
+        - id: store-svc
+          uri: http://localhost:8002/
+          predicates:
+            - Path=/store/**
+#          filters:
+#            - name: StoreFilter
+#              args:
+#                baseMessage: Spring Cloud Gateway StoreFilter
+#                preLogger: true
+#                postLogger: true
+#        - id: community-svc
+#            uri: http://localhost:8083/
+#            predicates:
+#              - Path=/community/**
+#            filters:
+#              - name: CommunityFilter
+#                args:
+#                  baseMessage: Spring Cloud Gateway CommunityFilter
+#                  preLogger: true
+#                  postLogger: true
+#        - id: contents-svc
+#            uri: http://localhost:8084/
+#            predicates:
+#              - Path=/contents/**
+#            filters:
+#              - name: ContentsFilter
+#                args:
+#                  baseMessage: Spring Cloud Gateway ContentsFilter
+#                  preLogger: true
+#                  postLogger: true
